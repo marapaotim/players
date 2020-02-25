@@ -4,35 +4,26 @@ namespace App\Service;
 
 use App\Repository\PlayerRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Model\Player;
+use App\Formatter\PlayerFormatter;
 
 class PlayerService extends AbstractService implements PlayerServiceInterface
 {
     protected $repository;
 
-    public function __construct(PlayerRepository $repository)
+    private $formatter;
+
+    public function __construct(PlayerRepository $repository, PlayerFormatter $formatter)
     {
         $this->repository = $repository;
+        $this->formatter = $formatter;
     }
 
     protected function getImportData()
     {
-        $data = file_get_contents('https://fantasy.premierleague.com/api/bootstrap-static/');
+        $data = file_get_contents(Player::PLAYER_API);
         $data = json_decode($data, true);
-        $players = [];
-        foreach ($data["elements"] as $value) {
-            $players[] = [
-                'id' => $value['id'],
-                'first_name' => $value['first_name'],
-                'second_name' => $value['second_name'],
-                'form' => $value['form'],
-                'total_points' => $value['total_points'],
-                'influence' => $value['influence'],
-                'creativity' => $value['creativity'],
-                'threat' => $value['threat'],
-                'ict_index' => $value['ict_index']
-            ];
-        }
-        return $players;
+        return $this->formatter->format($data);
     }
 
     public function all()
