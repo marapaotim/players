@@ -3,14 +3,14 @@
 namespace App\Services;
 
 use App\Model\Player;
-use App\Formatters\Contracts\FormatterInterface;
+use App\Formatters\Contracts\FormatterInterface as PlayerFormatter;
 use App\Services\Contracts\GetDataInterface;
 
 class GetPlayerDataService implements GetDataInterface
 {
     private $formatter;
 
-    public function __construct(FormatterInterface $formatter)
+    public function __construct(PlayerFormatter $formatter)
     {
         $this->formatter = $formatter;
     }

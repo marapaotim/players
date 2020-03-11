@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\Contracts\PlayerServiceInterface;
+use App\Services\Contracts\PlayerServiceInterface as PlayerService;
 use Response;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -12,7 +12,7 @@ class PlayerController extends Controller
 {
     private $service;
 
-    public function __construct(PlayerServiceInterface $service)
+    public function __construct(PlayerService $service)
     {
         $this->service = $service;
     }
