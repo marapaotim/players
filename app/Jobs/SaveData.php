@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Job;
+namespace App\Jobs;
 
-use App\Service\PlayerService;
+use App\Services\Contracts\ImportPlayerServiceInterface;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -15,7 +15,7 @@ class SaveData implements ShouldQueue
 
     private $service;
 
-    public function __construct(PlayerService $service)
+    public function __construct(ImportPlayerServiceInterface $service)
     {
         $this->service = $service;
     }

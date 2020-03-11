@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            app(\App\Service\SubmitJob::class)->handle();
+            app(\App\Services\Contracts\SubmitJobInterface::class)->handle();
         })->everyMinute();
         // $schedule->command('inspire')
         //          ->hourly();

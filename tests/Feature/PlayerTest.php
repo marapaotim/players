@@ -23,14 +23,14 @@ class PlayerTest extends TestCase
 
     public function test_jobs_import_data()
     {
-        app(\App\Service\SubmitJob::class)->handle();
+        app(\App\Services\Contracts\SubmitJobInterface::class)->handle();
         $this->assertTrue(True);
     }
 
     public function test_get_all_players_data()
     {
         $faker = factory(\App\Model\Player::class)->create();
-        $classService = \App::make(\App\Service\PlayerServiceInterface::class);
+        $classService = \App::make(\App\Services\Contracts\PlayerServiceInterface::class);
         $classService->all();
         $this->assertTrue(True);
     }
@@ -42,7 +42,7 @@ class PlayerTest extends TestCase
 
     public function test_find_player_full_data()
     {
-        $classService = \App::make(\App\Service\PlayerServiceInterface::class);
+        $classService = \App::make(\App\Services\Contracts\PlayerServiceInterface::class);
         $classService->find(1);
         $this->assertTrue(True);
     }

@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Formatter;
+namespace App\Formatters;
 
-class PlayerFormatter
+use App\Formatters\Contracts\FormatterInterface;
+
+class PlayerFormatter implements FormatterInterface
 {
     public function format($data)
     {

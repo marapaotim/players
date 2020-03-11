@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Service\PlayerServiceInterface;
+use App\Services\Contracts\PlayerServiceInterface;
 use Response;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
